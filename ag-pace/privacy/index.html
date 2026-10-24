@@ -20,7 +20,7 @@
 <body>
 <main>
 <h1>AG Pace privacy policy</h1>
-<p>Effective October 20, 2026</p>
+<p>Effective October 22, 2026</p>
 <p>AG Pace tracks your group's pace of play during a round of golf. This policy explains what the app collects, what it shares, and how long anything is kept. There are no accounts, no ads, no analytics, and no tracking.</p>
 <h2>On your phone only</h2>
 <p>These stay on your phone. They are never sent anywhere by the app.</p>
@@ -29,7 +29,8 @@
   <li><strong>Your location on the Driving Range screen</strong>, used only while that screen is open, before a round, to show how far you are from each range flag. It is not stored, and it is not shared on the live map.</li>
   <li><strong>Round recordings</strong>: a log of each round's GPS readings and hole finishes, kept in the app's folder in the Files app so you can review or delete them. The newest 20 are kept.</li>
   <li><strong>Past rounds</strong>: your tee times, hole finish times, and pace for each round you play.</li>
-  <li><strong>Settings</strong>: your tee time choices, whether you have seen How it works, and whether sharing is on.</li>
+  <li><strong>Your scores</strong>, when you keep score: strokes, putts, penalties, fairways and greens for each hole.</li>
+  <li><strong>Settings</strong>: your tee time choices, whether you have seen How it works, whether sharing is on, whether green distances are shown, and the last pin position the app knew.</li>
 </ul>
 <p>Deleting the app deletes all of this.</p>
 <h2>Shared with other AG Pace players: the live map</h2>
@@ -47,6 +48,8 @@
 <p><strong>When:</strong> only from your tee time until your round ends, and only while sharing is on. Nothing is shared before your tee time, after your round, or when the app is not tracking a round.</p>
 <p><strong>How long it is kept:</strong> your position is deleted when your round ends. If that does not happen (for example, your phone runs out of battery), other players stop seeing it after 10 minutes without an update, and it is deleted within about an hour. Only your latest position is ever stored; there is no history of where you have been.</p>
 <p><strong>Where it is stored:</strong> with Supabase, a hosted database service, in its West US (Oregon) region. Supabase stores it on the app's behalf and does not use it for anything else. The random ID is an anonymous sign in that exists only so your phone can update its own position and no one else's.</p>
+<h2>Shared with other AG Pace players: the day's pin position</h2>
+<p>When you set the day's pin position (1 to 4) next to your tee time, it is sent to the same Supabase database so every AG Pace player sees it for the rest of the day, and the app can guess tomorrow's. Only the course, the date, the position, and when it was set are stored. Nothing about you is stored with it: no ID, no name, and no location. The app reads it when the first screen opens. With "Show Green Distances" off in Settings, AG Pace, the app neither reads nor sends it.</p>
 <h2>Photos</h2>
 <p>When you share a round card, you choose where it goes. Saving it to Photos uses the permission iOS asks for at that moment. The app does not read your photo library.</p>
 <h2>Children</h2>
