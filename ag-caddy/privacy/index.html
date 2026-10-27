@@ -20,7 +20,7 @@
 <body>
 <main>
 <h1>AG Caddy privacy policy</h1>
-<p>Effective October 26, 2026</p>
+<p>Effective October 27, 2026</p>
 <p>AG Caddy is a golf app for Awbrey Glen: pace of play, green distances, scoring and games for your group, and Loop Challenges for members. This policy explains what the app collects, what it shares, and how long anything is kept. There are no ads, no analytics, and no tracking. A member account is optional and only needed for Challenges and Leagues.</p>
 <h2>On your phone only</h2>
 <p>These stay on your phone. They are never sent anywhere by the app.</p>
@@ -32,6 +32,7 @@
   <li><strong>Your scores</strong>, when you keep score: strokes, putts, penalties, fairways and greens for each hole, and any shots you measure.</li>
   <li><strong>Your player profile</strong>: your name, handicap index and preferred tees, used as you in your group.</li>
   <li><strong>The players in your group</strong>, when you add them: each one's name, handicap index and tees, and the players you have played with before, so a regular group is quick to set up, and the game you pick with its amounts.</li>
+  <li><strong>Another group's card kept on your phone</strong>, when you play a match and choose This phone: their names, handicap indexes, tees and scores.</li>
   <li><strong>Settings</strong>: your tee time choices, whether you have seen How it works, whether sharing is on, whether pin positions, pace and round stats are shown, and the last pin position the app knew.</li>
 </ul>
 <p>Deleting the app deletes all of this.</p>
@@ -52,6 +53,9 @@
 <p><strong>Where it is stored:</strong> with Supabase, a hosted database service, in its West US (Oregon) region. Supabase stores it on the app's behalf and does not use it for anything else. The random ID is an anonymous sign in that exists only so your phone can update its own position and no one else's.</p>
 <h2>Shared with other AG Caddy and AG Pace players: the day's pin position</h2>
 <p>When you set the day's pin position (1 to 4) next to your tee time, it is sent to the same Supabase database so every AG Caddy and AG Pace player sees it for the rest of the day, and the app can guess tomorrow's. Only the course, the date, the position, and when it was set are stored. Nothing about you is stored with it: no ID, no name, and no location. The app reads it when the first screen opens. With "Show pin positions" off in the app's Settings, the app neither reads nor sends it.</p>
+<h2>Shared with the other group: a match with a code</h2>
+<p>When you play a match against another group and their card is kept on their phone, one phone makes the match and gets a four character code, and a phone in the other group joins with it. Each phone then sends its group's players (the names as typed, handicap index and tees), its scores, the game and its amounts, and its tee time, so the other phone can show the match. Only the two phones in the match can read it; each changes only its own group.</p>
+<p><strong>Where it is stored:</strong> with Supabase, in the same database as the live map, under the same anonymous sign in (no account, no email). A match is deleted 7 days after the day it was played, and the phone that made it can delete it sooner by removing the group. Nothing is sent when you keep their card on your own phone.</p>
 <h2>Your member account (optional)</h2>
 <p>You do not need an account to use AG Caddy. Only Leagues and Challenges ask for one. To sign in, you pick your name from the club's member list and type a six digit code that is emailed to the address the club has on file for you. Once you are signed in, your name in the app is your name on the member list.</p>
 <p><strong>What is kept:</strong> the club's member list (each member's name, email, and member number) is kept in the same Supabase database, and records which members have signed in and when. The list can also hold a member's handicap index and GHIN number; GHIN numbers are never sent to phones. Your email is used only to send sign in codes, which are delivered by Resend, an email delivery service that sends them on the app's behalf. Your email is never shown to other members and never sent to anyone's phone; the app only shows it in part ("r•••@example.com") so you know where to look. Names are shown in the list members pick their name from when they sign in, which anyone using the app can open (with whether each name has been claimed), and, if you join Loop Challenges, on its boards, which only signed in members can see.</p>
