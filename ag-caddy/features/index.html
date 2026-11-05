@@ -30,6 +30,13 @@ p { margin: 0; max-width: 64ch; }
 .chip { background: var(--control); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; }
 .chip.lime { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 15px; }
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: ""; width: 8px; height: 8px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: translateY(-2px) rotate(45deg); transition: transform 0.15s; }
+.toc[open] summary::after { transform: translateY(2px) rotate(225deg); }
+.toc summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.toc nav { margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) { .toc summary::after { transition: none; } }
 nav a { color: var(--fg); text-decoration: none; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-size: 14px; }
 nav a:hover, nav a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
 .feature { display: grid; gap: 24px; scroll-margin-top: 24px; }
@@ -68,7 +75,9 @@ a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
       <span class="chip lime">iPhone: App Store soon</span>
       <span class="chip">Android: port starts next week</span>
     </div>
-    <nav aria-label="Features">
+    <details class="toc">
+      <summary>Jump to a feature</summary>
+      <nav aria-label="Features">
       <a href="#home">Home</a>
       <a href="#setup">Setting up a round</a>
       <a href="#yards">Green yards and today&#x27;s pin</a>
@@ -88,7 +97,8 @@ a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
       <a href="#account">Member account and friends</a>
       <a href="#pace">Pace of play</a>
       <a href="#privacy">Privacy</a>
-    </nav>
+      </nav>
+    </details>
   </header>
 
   <section class="feature" id="home">
