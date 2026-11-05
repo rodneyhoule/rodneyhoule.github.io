@@ -48,6 +48,13 @@ a { color: var(--accent); text-underline-offset: 3px; }
   .phone { width: calc(50% - 6px); }
   .phones.one .phone { width: 62%; }
 }
+a.zoom { display: block; border-radius: 26px; cursor: zoom-in; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(6, 12, 11, 0.96); display: grid; place-items: center; align-content: center; gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+.lb[hidden] { display: none; }
+.lb img { max-width: 100%; max-height: calc(100vh - 90px); max-height: calc(100dvh - 90px); width: auto; height: auto; border-radius: 28px; border: 1px solid var(--border); }
+.lb p { margin: 0; color: var(--muted); font-size: 15px; text-align: center; }
+.lb button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--control); color: var(--fg); font-size: 26px; line-height: 1; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -98,7 +105,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones one">
-      <figure class="phone"><img src="img/home.jpg" alt="Home" loading="lazy" width="560" height="1212"><figcaption>Home</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/home.jpg"><img src="img/home.jpg" alt="Home" loading="lazy" width="560" height="1212"></a><figcaption>Home</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="setup">
@@ -114,10 +121,10 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/setup.jpg" alt="Your round" loading="lazy" width="560" height="1212"><figcaption>Your round</figcaption></figure>
-      <figure class="phone"><img src="img/players.jpg" alt="Your group and a game" loading="lazy" width="560" height="1212"><figcaption>Your group and a game</figcaption></figure>
-      <figure class="phone"><img src="img/player-sheet.jpg" alt="A player&#x27;s index and tees" loading="lazy" width="560" height="1212"><figcaption>A player&#x27;s index and tees</figcaption></figure>
-      <figure class="phone"><img src="img/countdown.jpg" alt="Counting down to the tee" loading="lazy" width="560" height="1212"><figcaption>Counting down to the tee</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/setup.jpg"><img src="img/setup.jpg" alt="Your round" loading="lazy" width="560" height="1212"></a><figcaption>Your round</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/players.jpg"><img src="img/players.jpg" alt="Your group and a game" loading="lazy" width="560" height="1212"></a><figcaption>Your group and a game</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/player-sheet.jpg"><img src="img/player-sheet.jpg" alt="A player&#x27;s index and tees" loading="lazy" width="560" height="1212"></a><figcaption>A player&#x27;s index and tees</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/countdown.jpg"><img src="img/countdown.jpg" alt="Counting down to the tee" loading="lazy" width="560" height="1212"></a><figcaption>Counting down to the tee</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="yards">
@@ -134,7 +141,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones one">
-      <figure class="phone"><img src="img/round.jpg" alt="The round screen" loading="lazy" width="560" height="1212"><figcaption>The round screen</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/round.jpg"><img src="img/round.jpg" alt="The round screen" loading="lazy" width="560" height="1212"></a><figcaption>The round screen</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="holemap">
@@ -151,11 +158,11 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/hole-tee.jpg" alt="Tee shot target" loading="lazy" width="560" height="1212"><figcaption>Tee shot target</figcaption></figure>
-      <figure class="phone"><img src="img/hole-target.jpg" alt="A target you place" loading="lazy" width="560" height="1212"><figcaption>A target you place</figcaption></figure>
-      <figure class="phone"><img src="img/hole-hazards.jpg" alt="Hazards and carries" loading="lazy" width="560" height="1212"><figcaption>Hazards and carries</figcaption></figure>
-      <figure class="phone"><img src="img/hole-layup.jpg" alt="Lay up" loading="lazy" width="560" height="1212"><figcaption>Lay up</figcaption></figure>
-      <figure class="phone"><img src="img/hole-par3.jpg" alt="A par 3" loading="lazy" width="560" height="1212"><figcaption>A par 3</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-tee.jpg"><img src="img/hole-tee.jpg" alt="Tee shot target" loading="lazy" width="560" height="1212"></a><figcaption>Tee shot target</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-target.jpg"><img src="img/hole-target.jpg" alt="A target you place" loading="lazy" width="560" height="1212"></a><figcaption>A target you place</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-hazards.jpg"><img src="img/hole-hazards.jpg" alt="Hazards and carries" loading="lazy" width="560" height="1212"></a><figcaption>Hazards and carries</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-layup.jpg"><img src="img/hole-layup.jpg" alt="Lay up" loading="lazy" width="560" height="1212"></a><figcaption>Lay up</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-par3.jpg"><img src="img/hole-par3.jpg" alt="A par 3" loading="lazy" width="560" height="1212"></a><figcaption>A par 3</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="slopes">
@@ -165,7 +172,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
       <p>Zoomed in on the green, the slopes are shaded from flat (blue) through green and yellow to steep (red), with arrows pointing downhill. The slopes come from public lidar of the course.</p>
     </div>
     <div class="phones one">
-      <figure class="phone"><img src="img/hole-green.jpg" alt="Hole 12&#x27;s green" loading="lazy" width="560" height="1212"><figcaption>Hole 12&#x27;s green</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-green.jpg"><img src="img/hole-green.jpg" alt="Hole 12&#x27;s green" loading="lazy" width="560" height="1212"></a><figcaption>Hole 12&#x27;s green</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="coursemap">
@@ -180,8 +187,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/map.jpg" alt="Every group by tee time" loading="lazy" width="560" height="1212"><figcaption>Every group by tee time</figcaption></figure>
-      <figure class="phone"><img src="img/map-blind.jpg" alt="A group in the blind area on 14" loading="lazy" width="560" height="1212"><figcaption>A group in the blind area on 14</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/map.jpg"><img src="img/map.jpg" alt="Every group by tee time" loading="lazy" width="560" height="1212"></a><figcaption>Every group by tee time</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/map-blind.jpg"><img src="img/map-blind.jpg" alt="A group in the blind area on 14" loading="lazy" width="560" height="1212"></a><figcaption>A group in the blind area on 14</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="scoring">
@@ -196,8 +203,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/score-sheet.jpg" alt="Opens as you leave the hole" loading="lazy" width="560" height="1212"><figcaption>Opens as you leave the hole</figcaption></figure>
-      <figure class="phone"><img src="img/card.jpg" alt="The card" loading="lazy" width="560" height="1212"><figcaption>The card</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/score-sheet.jpg"><img src="img/score-sheet.jpg" alt="Opens as you leave the hole" loading="lazy" width="560" height="1212"></a><figcaption>Opens as you leave the hole</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/card.jpg"><img src="img/card.jpg" alt="The card" loading="lazy" width="560" height="1212"></a><figcaption>The card</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="games">
@@ -212,10 +219,10 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/game-settings.jpg" alt="A game&#x27;s settings" loading="lazy" width="560" height="1212"><figcaption>A game&#x27;s settings</figcaption></figure>
-      <figure class="phone"><img src="img/wolf-card.jpg" alt="Wolf on the card" loading="lazy" width="560" height="1212"><figcaption>Wolf on the card</figcaption></figure>
-      <figure class="phone"><img src="img/wolf-settings.jpg" alt="Wolf&#x27;s settings" loading="lazy" width="560" height="1212"><figcaption>Wolf&#x27;s settings</figcaption></figure>
-      <figure class="phone"><img src="img/nassau.jpg" alt="Nassau in play" loading="lazy" width="560" height="1212"><figcaption>Nassau in play</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/game-settings.jpg"><img src="img/game-settings.jpg" alt="A game&#x27;s settings" loading="lazy" width="560" height="1212"></a><figcaption>A game&#x27;s settings</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/wolf-card.jpg"><img src="img/wolf-card.jpg" alt="Wolf on the card" loading="lazy" width="560" height="1212"></a><figcaption>Wolf on the card</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/wolf-settings.jpg"><img src="img/wolf-settings.jpg" alt="Wolf&#x27;s settings" loading="lazy" width="560" height="1212"></a><figcaption>Wolf&#x27;s settings</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/nassau.jpg"><img src="img/nassau.jpg" alt="Nassau in play" loading="lazy" width="560" height="1212"></a><figcaption>Nassau in play</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="settle">
@@ -229,8 +236,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/done.jpg" alt="Results and Settle up" loading="lazy" width="560" height="1212"><figcaption>Results and Settle up</figcaption></figure>
-      <figure class="phone"><img src="img/venmo.jpg" alt="Pay or request in Venmo" loading="lazy" width="560" height="1212"><figcaption>Pay or request in Venmo</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/done.jpg"><img src="img/done.jpg" alt="Results and Settle up" loading="lazy" width="560" height="1212"></a><figcaption>Results and Settle up</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/venmo.jpg"><img src="img/venmo.jpg" alt="Pay or request in Venmo" loading="lazy" width="560" height="1212"></a><figcaption>Pay or request in Venmo</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="match">
@@ -245,9 +252,9 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/add-group.jpg" alt="Add the other group" loading="lazy" width="560" height="1212"><figcaption>Add the other group</figcaption></figure>
-      <figure class="phone"><img src="img/match-round.jpg" alt="The match on the round screen" loading="lazy" width="560" height="1212"><figcaption>The match on the round screen</figcaption></figure>
-      <figure class="phone"><img src="img/match-card.jpg" alt="Yours, theirs and the match" loading="lazy" width="560" height="1212"><figcaption>Yours, theirs and the match</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/add-group.jpg"><img src="img/add-group.jpg" alt="Add the other group" loading="lazy" width="560" height="1212"></a><figcaption>Add the other group</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/match-round.jpg"><img src="img/match-round.jpg" alt="The match on the round screen" loading="lazy" width="560" height="1212"></a><figcaption>The match on the round screen</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/match-card.jpg"><img src="img/match-card.jpg" alt="Yours, theirs and the match" loading="lazy" width="560" height="1212"></a><figcaption>Yours, theirs and the match</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="leagues">
@@ -264,11 +271,11 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/leagues.jpg" alt="Your leagues and public ones" loading="lazy" width="560" height="1212"><figcaption>Your leagues and public ones</figcaption></figure>
-      <figure class="phone"><img src="img/league.jpg" alt="A league&#x27;s page" loading="lazy" width="560" height="1212"><figcaption>A league&#x27;s page</figcaption></figure>
-      <figure class="phone"><img src="img/lday.jpg" alt="Setting up a league day" loading="lazy" width="560" height="1212"><figcaption>Setting up a league day</figcaption></figure>
-      <figure class="phone"><img src="img/lgroups.jpg" alt="Teams and groups" loading="lazy" width="560" height="1212"><figcaption>Teams and groups</figcaption></figure>
-      <figure class="phone"><img src="img/lresults.jpg" alt="A day&#x27;s results" loading="lazy" width="560" height="1212"><figcaption>A day&#x27;s results</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/leagues.jpg"><img src="img/leagues.jpg" alt="Your leagues and public ones" loading="lazy" width="560" height="1212"></a><figcaption>Your leagues and public ones</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/league.jpg"><img src="img/league.jpg" alt="A league&#x27;s page" loading="lazy" width="560" height="1212"></a><figcaption>A league&#x27;s page</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/lday.jpg"><img src="img/lday.jpg" alt="Setting up a league day" loading="lazy" width="560" height="1212"></a><figcaption>Setting up a league day</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/lgroups.jpg"><img src="img/lgroups.jpg" alt="Teams and groups" loading="lazy" width="560" height="1212"></a><figcaption>Teams and groups</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/lresults.jpg"><img src="img/lresults.jpg" alt="A day&#x27;s results" loading="lazy" width="560" height="1212"></a><figcaption>A day&#x27;s results</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="loop">
@@ -282,8 +289,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/loop-round.jpg" alt="A Loop round" loading="lazy" width="560" height="1212"><figcaption>A Loop round</figcaption></figure>
-      <figure class="phone"><img src="img/loop-challenges.jpg" alt="Loop Challenges" loading="lazy" width="560" height="1212"><figcaption>Loop Challenges</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/loop-round.jpg"><img src="img/loop-round.jpg" alt="A Loop round" loading="lazy" width="560" height="1212"></a><figcaption>A Loop round</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/loop-challenges.jpg"><img src="img/loop-challenges.jpg" alt="Loop Challenges" loading="lazy" width="560" height="1212"></a><figcaption>Loop Challenges</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="achievements">
@@ -297,9 +304,9 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/achievements.jpg" alt="Achievements" loading="lazy" width="560" height="1212"><figcaption>Achievements</figcaption></figure>
-      <figure class="phone"><img src="img/badge.jpg" alt="One badge" loading="lazy" width="560" height="1212"><figcaption>One badge</figcaption></figure>
-      <figure class="phone"><img src="img/done-badge.jpg" alt="Earned at the end of a round" loading="lazy" width="560" height="1212"><figcaption>Earned at the end of a round</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/achievements.jpg"><img src="img/achievements.jpg" alt="Achievements" loading="lazy" width="560" height="1212"></a><figcaption>Achievements</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/badge.jpg"><img src="img/badge.jpg" alt="One badge" loading="lazy" width="560" height="1212"></a><figcaption>One badge</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/done-badge.jpg"><img src="img/done-badge.jpg" alt="Earned at the end of a round" loading="lazy" width="560" height="1212"></a><figcaption>Earned at the end of a round</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="range">
@@ -309,7 +316,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
       <p>Yards to every flag on the range from where you stand, nearest first, and the chipping flags at the end you&#x27;re on.</p>
     </div>
     <div class="phones one">
-      <figure class="phone"><img src="img/range.jpg" alt="Driving Range" loading="lazy" width="560" height="1212"><figcaption>Driving Range</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/range.jpg"><img src="img/range.jpg" alt="Driving Range" loading="lazy" width="560" height="1212"></a><figcaption>Driving Range</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="tools">
@@ -323,8 +330,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/search.jpg" alt="Ball search" loading="lazy" width="560" height="1212"><figcaption>Ball search</figcaption></figure>
-      <figure class="phone"><img src="img/measure.jpg" alt="Measure shot" loading="lazy" width="560" height="1212"><figcaption>Measure shot</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/search.jpg"><img src="img/search.jpg" alt="Ball search" loading="lazy" width="560" height="1212"></a><figcaption>Ball search</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/measure.jpg"><img src="img/measure.jpg" alt="Measure shot" loading="lazy" width="560" height="1212"></a><figcaption>Measure shot</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="past">
@@ -334,8 +341,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       <p>Every round is kept on your phone: the score, the game, the money and the card. Share a round&#x27;s scorecard as an image.</p>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/history.jpg" alt="Past rounds" loading="lazy" width="560" height="1212"><figcaption>Past rounds</figcaption></figure>
-      <figure class="phone"><img src="img/past.jpg" alt="A past round" loading="lazy" width="560" height="1212"><figcaption>A past round</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/history.jpg"><img src="img/history.jpg" alt="Past rounds" loading="lazy" width="560" height="1212"></a><figcaption>Past rounds</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/past.jpg"><img src="img/past.jpg" alt="A past round" loading="lazy" width="560" height="1212"></a><figcaption>A past round</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="account">
@@ -350,8 +357,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/claim.jpg" alt="Sign up" loading="lazy" width="560" height="1212"><figcaption>Sign up</figcaption></figure>
-      <figure class="phone"><img src="img/friends.jpg" alt="Friends" loading="lazy" width="560" height="1212"><figcaption>Friends</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/claim.jpg"><img src="img/claim.jpg" alt="Sign up" loading="lazy" width="560" height="1212"></a><figcaption>Sign up</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/friends.jpg"><img src="img/friends.jpg" alt="Friends" loading="lazy" width="560" height="1212"></a><figcaption>Friends</figcaption></figure>
     </div>
   </section>
   <section class="feature" id="report">
@@ -361,7 +368,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
       <p>A bug button on every screen sends a note and a screenshot straight to me.</p>
     </div>
     <div class="phones one">
-      <figure class="phone"><img src="img/report.jpg" alt="Report a bug or idea" loading="lazy" width="560" height="1212"><figcaption>Report a bug or idea</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/report.jpg"><img src="img/report.jpg" alt="Report a bug or idea" loading="lazy" width="560" height="1212"></a><figcaption>Report a bug or idea</figcaption></figure>
     </div>
   </section>
 
@@ -381,5 +388,23 @@ a { color: var(--accent); text-underline-offset: 3px; }
   </section>
 
 </div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Screenshot"><img id="lb-img" alt=""><p id="lb-cap"></p><button type="button" id="lb-close" aria-label="Close">&times;</button></div>
+<script>
+(() => {
+  const lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  const close = () => { lb.hidden = true; img.removeAttribute('src'); document.body.style.overflow = ''; };
+  document.querySelectorAll('a.zoom').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const small = a.querySelector('img');
+    img.src = a.getAttribute('href'); img.alt = small.alt;
+    const fc = a.closest('figure')?.querySelector('figcaption');
+    cap.textContent = fc ? fc.textContent : '';
+    lb.hidden = false; document.body.style.overflow = 'hidden';
+    document.getElementById('lb-close').focus();
+  }));
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+})();
+</script>
 </body>
 </html>

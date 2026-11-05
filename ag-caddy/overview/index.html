@@ -67,6 +67,13 @@ a { color: var(--accent); text-underline-offset: 3px; }
   .phone { width: calc(50% - 7px); }
   .phones.one .phone { width: 62%; }
 }
+a.zoom { display: block; border-radius: 26px; cursor: zoom-in; }
+a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(6, 12, 11, 0.96); display: grid; place-items: center; align-content: center; gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+.lb[hidden] { display: none; }
+.lb img { max-width: 100%; max-height: calc(100vh - 90px); max-height: calc(100dvh - 90px); width: auto; height: auto; border-radius: 28px; border: 1px solid var(--border); }
+.lb p { margin: 0; color: var(--muted); font-size: 15px; text-align: center; }
+.lb button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--control); color: var(--fg); font-size: 26px; line-height: 1; cursor: pointer; }
 </style>
 <style>body{margin:0}</style>
 </head>
@@ -96,8 +103,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/score-popup.jpg" alt="Score sheet for hole 5 with four players, Tilt multipliers and points"><figcaption>Opens as you leave the hole</figcaption></figure>
-      <figure class="phone"><img src="img/tilt-card.jpg" alt="Card for a Tilt game showing 2x and 3x multipliers on hole 5"><figcaption>Tilt, with the multipliers</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/score-popup.jpg"><img src="img/score-popup.jpg" alt="Score sheet for hole 5 with four players, Tilt multipliers and points"></a><figcaption>Opens as you leave the hole</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/tilt-card.jpg"><img src="img/tilt-card.jpg" alt="Card for a Tilt game showing 2x and 3x multipliers on hole 5"></a><figcaption>Tilt, with the multipliers</figcaption></figure>
     </div>
   </section>
 
@@ -113,8 +120,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/leagues.jpg" alt="Leagues list with an invite, your leagues and public leagues"><figcaption>Invites, your leagues, public leagues</figcaption></figure>
-      <figure class="phone"><img src="img/league.jpg" alt="A league page with the next league day, Sign up, games and standings"><figcaption>Sign up, games and standings</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/leagues.jpg"><img src="img/leagues.jpg" alt="Leagues list with an invite, your leagues and public leagues"></a><figcaption>Invites, your leagues, public leagues</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/league.jpg"><img src="img/league.jpg" alt="A league page with the next league day, Sign up, games and standings"></a><figcaption>Sign up, games and standings</figcaption></figure>
     </div>
   </section>
 
@@ -136,8 +143,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/round-groups.jpg" alt="Round screen with the green, pin 4, yards to front, center and back, the group's scores and a match against Kim's group"><figcaption>Today's pin, your group and the match</figcaption></figure>
-      <figure class="phone"><img src="img/hole-green.jpg" alt="Hole 12 green zoomed in with slopes shaded and arrows downhill"><figcaption>Green slopes on hole 12</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/round-groups.jpg"><img src="img/round-groups.jpg" alt="Round screen with the green, pin 4, yards to front, center and back, the group's scores and a match against Kim's group"></a><figcaption>Today's pin, your group and the match</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/hole-green.jpg"><img src="img/hole-green.jpg" alt="Hole 12 green zoomed in with slopes shaded and arrows downhill"></a><figcaption>Green slopes on hole 12</figcaption></figure>
     </div>
   </section>
 
@@ -152,8 +159,8 @@ a { color: var(--accent); text-underline-offset: 3px; }
       </ul>
     </div>
     <div class="phones">
-      <figure class="phone"><img src="img/map.jpg" alt="Whole course map with groups labeled by tee time"><figcaption>Every group by tee time</figcaption></figure>
-      <figure class="phone"><img src="img/map-blind.jpg" alt="Hole 14 with the 8:40 group in the blind area and a warning to hold your shot"><figcaption>A group in the blind area on 14</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/map.jpg"><img src="img/map.jpg" alt="Whole course map with groups labeled by tee time"></a><figcaption>Every group by tee time</figcaption></figure>
+      <figure class="phone"><a class="zoom" href="big/map-blind.jpg"><img src="img/map-blind.jpg" alt="Hole 14 with the 8:40 group in the blind area and a warning to hold your shot"></a><figcaption>A group in the blind area on 14</figcaption></figure>
     </div>
   </section>
 
@@ -177,5 +184,23 @@ a { color: var(--accent); text-underline-offset: 3px; }
   </section>
 
 </div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Screenshot"><img id="lb-img" alt=""><p id="lb-cap"></p><button type="button" id="lb-close" aria-label="Close">&times;</button></div>
+<script>
+(() => {
+  const lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  const close = () => { lb.hidden = true; img.removeAttribute('src'); document.body.style.overflow = ''; };
+  document.querySelectorAll('a.zoom').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const small = a.querySelector('img');
+    img.src = a.getAttribute('href'); img.alt = small.alt;
+    const fc = a.closest('figure')?.querySelector('figcaption');
+    cap.textContent = fc ? fc.textContent : '';
+    lb.hidden = false; document.body.style.overflow = 'hidden';
+    document.getElementById('lb-close').focus();
+  }));
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+})();
+</script>
 </body>
 </html>
