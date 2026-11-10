@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awbrey Glen Men's Golf Guide</title>
+<style>
+:root{
+  --bg:#101814; --card:#18231d; --ink:#eef2ee; --muted:#9db0a4; --line:#2b3a31;
+  --green:#7cc7a0; --green2:#3f9d6b; --gold:#d9b86a; --tint:#1f3027; --goldtint:#2b2716;
+}
+:root{color-scheme:dark}
+h2{text-transform:uppercase;letter-spacing:1px;font-weight:400}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.hero{background:#18231d;color:#7cc7a0;padding:32px 0 34px;text-align:center;border-bottom:1px solid var(--line)}.hero img{display:block;margin:0 auto 18px;height:64px;width:auto}
+.hero small{letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-size:12px}
+.hero h1{margin:6px 0 8px;font-size:clamp(26px,6vw,42px);line-height:1.1;font-weight:400;letter-spacing:1px;text-transform:uppercase}
+.hero p{margin-left:auto;margin-right:auto;color:var(--ink);opacity:1}
+.hero p{margin:0;max-width:560px;opacity:.92}
+nav.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 16px;scrollbar-width:none}
+nav.top a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:14px;padding:6px 12px;border-radius:99px}
+nav.top a:hover,nav.top a.on{background:var(--tint);color:var(--green)}
+section{padding:34px 0 6px}
+h2{font-size:26px;margin:0 0 4px;color:var(--green)}
+.sub{color:var(--muted);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+button.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:99px;cursor:pointer}
+button.chip:hover{border-color:var(--green2)}
+button.chip.on{background:var(--green);color:#10201a;border-color:var(--green)}
+.result{margin-top:12px;border-left:4px solid var(--gold);background:var(--goldtint);padding:14px 16px;border-radius:10px}
+.result h3{margin:0 0 4px;font-size:18px}
+.result a{color:var(--green);font-weight:600}
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(8,minmax(88px,1fr));gap:8px;overflow-x:auto;padding:6px 0}
+.tl button{font:inherit;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;color:var(--ink)}
+.tl button:hover{border-color:var(--green2);transform:translateY(-1px)}
+.tl b{display:block;font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+.tl span{font-size:13px;line-height:1.25;display:block;margin-top:2px}
+/* events */
+details.ev{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:0 0 10px;overflow:hidden}
+details.ev[open]{border-color:var(--green2)}
+details.ev summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:center}
+details.ev summary::-webkit-details-marker{display:none}
+.num{flex:none;width:36px;height:36px;border-radius:50%;background:var(--tint);color:var(--green);display:grid;place-items:center;font-weight:700}
+.stitle{flex:1}
+.stitle strong{display:block;font-size:17px}
+.stitle em{font-style:normal;color:var(--muted);font-size:13.5px}
+.chev{transition:transform .2s;color:var(--muted)}
+details[open] .chev{transform:rotate(90deg)}
+.body{padding:0 16px 16px 64px}
+@media (max-width:560px){.body{padding-left:16px}}
+.body p{margin:0 0 10px}
+.body ul{margin:0 0 10px;padding-left:20px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--goldtint);color:var(--gold);margin-right:4px}
+.tag.pts{background:var(--tint);color:var(--green)}
+.tag.run{background:#2a2845;color:#b6b2f0}
+.tools{display:flex;justify-content:flex-end;margin:0 0 8px}
+.tools button{font:inherit;font-size:13px;background:none;border:none;color:var(--green);cursor:pointer;text-decoration:underline}
+/* tools */
+label{display:block;font-size:14px;margin:12px 0 2px;color:var(--muted)}
+input[type=number]{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:120px}
+input[type=range]{width:100%;accent-color:var(--green2)}
+.row{display:flex;justify-content:space-between;font-size:15px}
+.big{font-size:40px;font-weight:700;color:var(--green);font-family:Georgia,serif;line-height:1}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green2),var(--gold));width:0;transition:width .25s}
+.note{font-size:13.5px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+tr.hide{display:none}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.game h3{margin:0 0 2px;font-size:17px}
+.price{font-weight:700;color:var(--green)}
+footer{padding:36px 0 50px;color:var(--muted);font-size:14px;text-align:center}
+.hl{animation:hl 1.6s ease}
+@keyframes hl{0%{box-shadow:0 0 0 4px var(--gold)}100%{box-shadow:0 0 0 0 transparent}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img src="https://static.clubessential.com/CEFED/_Axis-Website/Sites/AwbreyGlen-2025/images/LogoWhite2x.png" alt="Awbrey Glen" onerror="this.style.display='none'">
+    <small>Men's Golf Association</small>
+    <h1>A New Member's Guide to Men's Golf</h1>
+    <p>What we play, when we play it, and how to get yourself into a game. Tap around, it is built to be explored.</p>
+  </div>
+</header>
+
+<nav class="top"><div class="wrap">
+  <a href="#season">Season</a>
+  <a href="#majors">Majors</a>
+  <a href="#weekly">Weekly games</a>
+  <a href="#signup">Sign up</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="season">
+  <h2>The season at a glance</h2>
+  <p class="sub">Tap a month to jump to the event.</p>
+  <div class="tl">
+    <button data-go="m-guest"><b>March</b><span>Member Guest lottery opens</span></button>
+    <button data-go="g-sweeps"><b>April</b><span>Kick Off Dinner, Sweeps begin</span></button>
+    <button data-go="m-spring"><b>May</b><span>Men's Spring Trip</span></button>
+    <button data-go="m-flat"><b>June</b><span>Flat vs. Round</span></button>
+    <button data-go="m-guest"><b>July</b><span>Member Guest</span></button>
+    <button data-go="m-club"><b>August</b><span>Club Championship</span></button>
+    <button data-go="m-mm"><b>September</b><span>Member Member</span></button>
+    <button data-go="m-cup"><b>October</b><span>Awbrey Cup, Men's Closer</span></button>
+  </div>
+</section>
+
+<section id="majors">
+  <h2>The Men's Majors</h2>
+  <p class="sub">Five tournaments make up the major season. Playing in them earns Awbrey Cup points.</p>
+  <div class="tools"><button id="toggleAll">Expand all</button></div>
+
+  <details class="ev" id="m-flat">
+    <summary><span class="num">1</span><span class="stitle"><strong>Flat vs. Round</strong><em>Two days in June, Friday and Saturday</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p><span class="tag">Season opener</span><span class="tag pts">3 pts</span></p>
+      <p>The most social event on the calendar. The field splits into two teams by age: the Flat Bellies and the Round Bellies. There is no fixed age cutoff. It is set each year by the average age of everyone who signs up, so the dividing line moves with the field.</p>
+      <ul>
+        <li>Each side has a captain. The night before, a pairings party is held where the captains set the matchups.</li>
+        <li>Format: two-person best ball over two days.</li>
+        <li>Points are awarded for the front nine, the back nine, and the overall eighteen, so three points are available in every match.</li>
+      </ul>
+      <p><b>New and want to meet people?</b> This is the one. It puts different generations of members in the same groups, and the pairings party will do more to get you connected than anything else we run.</p>
+    </div>
+  </details>
+
+  <details class="ev" id="m-guest">
+    <summary><span class="num">2</span><span class="stitle"><strong>Men's Member Guest</strong><em>Three days in July, Thursday through Saturday, 60 teams</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p><span class="tag">Lottery entry</span><span class="tag pts">3 pts</span></p>
+      <p>The club's premiere event. You invite a guest from outside the club and play as a two-person team.</p>
+      <p><b>Registration is a lottery, not first come, first served.</b></p>
+      <ul>
+        <li>The entry window opens for five days in early March, from 7:00 am Monday to 5:00 pm Friday.</li>
+        <li>When you enter during that window makes no difference. Early and late entries have identical odds. There is no advantage to rushing.</li>
+        <li>Sports memberships and members who have submitted a resignation are not eligible.</li>
+        <li>The draw happens that Saturday morning using randomized lottery software, which also ranks the remaining teams into a waitlist.</li>
+        <li>Teams drawn into the field are charged a non-refundable deposit to hold the spot. It applies toward the entry fee.</li>
+        <li>After the field and waitlist are set, registration reopens to the remaining membership levels.</li>
+      </ul>
+      <p><b>Thursday is not a warm up day.</b> It includes a practice round shotgun, a best ball tournament, multi-staged putting contests, and The Gathering, all with real payouts. Friday and Saturday are flighted, with a horserace for the flight winners. Entry includes a tee prize.</p>
+      <p class="note">Premium event with the highest entry fee of the season. Check the calendar for current pricing.</p>
+    </div>
+  </details>
+
+  <details class="ev" id="m-club">
+    <summary><span class="num">3</span><span class="stitle"><strong>Men's Club Championship</strong><em>Three days in August, Friday through Sunday</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p><span class="tag">Three divisions</span><span class="tag pts">3 pts</span></p>
+      <p>Club champions are determined by gross scores. Net payouts are also provided.</p>
+
+      <div class="card" style="margin:0 0 12px">
+        <b>Which division am I in?</b>
+        <label for="age">Your age</label>
+        <input type="number" id="age" min="18" max="110" placeholder="e.g. 52">
+        <div id="divout" class="note" style="margin-top:8px">Enter your age to see your division and tees.</div>
+      </div>
+
+      <p><b>Championship / Open Division</b>, under 55, Black Tees. Thirty-six holes of stroke play qualifying, then match play for the title.</p>
+      <ul>
+        <li>Friday: Qualifying Round 1, tee times from the early afternoon</li>
+        <li>Saturday: Qualifying Round 2, morning start</li>
+        <li>Sunday: the top four qualifiers enter match play to determine the Club Champion. Everyone else plays a third round of stroke play to decide the Open Division net winners.</li>
+        <li>Payouts: the top four from the match play bracket, plus first through third net across the three stroke play rounds.</li>
+      </ul>
+      <p><b>Senior Division</b>, ages 55 to 69, Gold/White Tees. Thirty-six holes of stroke play on Saturday and Sunday only. Payouts: Senior Club Champion, second and third gross, and first through third net.</p>
+      <p><b>Super Senior Division</b>, 70 and up, White Tees. Thirty-six holes of stroke play on Saturday and Sunday, the same weekend as the other divisions. Payouts: Super Senior Club Champion, second and third gross, and first through third net.</p>
+      <p><b>Rule of 80.</b> Available in the Senior and Super Senior divisions for net competition only. If you elect to use it, you are no longer eligible for the gross competition.</p>
+      <p class="note">All start times are estimates. Final times depend on the size of the field and your position in it. Entry includes elevated payouts, trophies for the champions, and a hosted meal after the final round.</p>
+    </div>
+  </details>
+
+  <details class="ev" id="m-mm">
+    <summary><span class="num">4</span><span class="stitle"><strong>Men's Member Member</strong><em>Two days in September, Friday and Saturday</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p><span class="tag">Opens about 5 weeks out, 7:00 am</span><span class="tag pts">3 pts</span></p>
+      <p>One of the most popular events of the year. Teams of two members, with a maximum course handicap spread of 8 between partners. The field splits into four flights by combined handicap index, and the top teams in each flight qualify for the Championship Horserace.</p>
+      <p>You play four nine-hole rounds, two each day, returning to the clubhouse after each one. Each round is a different format: Net Better Ball, Chapman, Scramble, and Alternate Shot. Handicap allowances differ by format and are posted with the event.</p>
+      <p><b>Rule of 80</b> applies here as well and moves you up one set of tees:</p>
+      <table>
+        <tr><th>Flight</th><th>Normal tees</th><th>With Rule of 80</th></tr>
+        <tr><td>Flight 1</td><td>Gold</td><td>Gold/White</td></tr>
+        <tr><td>Flight 2</td><td>Gold/White</td><td>White</td></tr>
+        <tr><td>Flights 3 and 4</td><td>White</td><td>Green</td></tr>
+      </table>
+      <p style="margin-top:10px">Entry includes Champions trophies, payouts, and meals after both rounds.</p>
+      <p><b>Spots go fast.</b> Have your partner committed before registration opens.</p>
+    </div>
+  </details>
+
+  <details class="ev" id="m-cup">
+    <summary><span class="num">5</span><span class="stitle"><strong>Awbrey Cup</strong><em>Two days in early October, invitation only, no entry fee</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p><span class="tag">Season finale</span><span class="tag">Cannot sign up</span></p>
+      <p>The only event you cannot sign up for. The field is the top 24 point earners of the season. It is fully funded by the Men's Golf Association, so there is no cost to play.</p>
+      <p>Two captains are selected, the two teams are drafted, and pairings are set for two days of competition. Standings are published throughout the season, so you can see where you sit at any point.</p>
+    </div>
+  </details>
+
+  <details class="ev" id="m-spring">
+    <summary><span class="num">+</span><span class="stitle"><strong>Men's Spring Trip</strong><em>Usually in May</em></span><span class="chev">&#9656;</span></summary>
+    <div class="body">
+      <p>An away trip organized each spring, open to the membership. Destination, format, and dates change from year to year, and details are announced on the member calendar.</p>
+    </div>
+  </details>
+</section>
+
+<section id="weekly">
+  <h2>Weekly games</h2>
+  <p class="sub">Filter by how you like to play.</p>
+  <div class="chips" id="gfilter">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="pts">Earns Cup points</button>
+    <button class="chip" data-f="run">Member run</button>
+  </div>
+  <div class="grid3">
+    <div class="card game" id="g-sweeps" data-t="pts">
+      <span class="tag pts">1 pt per week</span>
+      <h3>Wednesday Sweeps</h3>
+      <div><span class="price">$10</span> &nbsp;Wednesdays at 1:00 pm</div>
+      <p class="note">The main weekly men's game. Usually a shotgun start, occasionally tee times. The format rotates every week, so you might play a scramble one week, a shamble the next, then one gross and one net. Pairings are typically ABCD, which groups you across handicap levels so you play with different people constantly. Closest to the pin every week. Payouts are in shop credit.</p>
+      <p class="note">Optional dinner after the round on the first Wednesday of each month (opt in when you register). The season opens with a Kick Off Dinner in April and closes with the Men's Closer in October.</p>
+    </div>
+    <div class="card game" id="g-sat" data-t="pts">
+      <span class="tag pts">2 pts per play</span><span class="tag">Easiest to join</span>
+      <h3>Saturday Morning Game</h3>
+      <div><span class="price">$10</span> &nbsp;Saturdays, tee time before 1:00 pm</div>
+      <p class="note">A two-person partner game with a rotating format each week, plus rotating skins that alternate between gross and net. Payouts are in shop credit.</p>
+      <p class="note"><b>No advance sign up and no partner required.</b> Book a Saturday tee time before 1:00 pm, tell the golf shop at check in that you want in, and they will pair you with someone if you are on your own. Points at double the rate of Sweeps.</p>
+    </div>
+    <div class="card game" id="g-skins" data-t="run">
+      <span class="tag run">Member run</span>
+      <h3>Friday Skins</h3>
+      <div><span class="price">$10 cash</span> &nbsp;Fridays, tee times from 11:00 am</div>
+      <p class="note">Your $10 buys you into both the gross and net skins pots. Sign up on the member calendar. Settle up in cash in the restaurant after the round.</p>
+    </div>
+    <div class="card game" id="g-9" data-t="run">
+      <span class="tag run">Member run</span><span class="tag">Co-ed</span>
+      <h3>9 After 5</h3>
+      <div><span class="price">$5 cash</span> &nbsp;Wednesdays at 5:30 pm, shotgun</div>
+      <p class="note">Nine holes in the evening with a rotating format. Cash buy in, cash payouts, settled in the restaurant afterward. Sign up on the member calendar.</p>
+      <p class="note">Designed for younger working members, with a start late enough to play after a workday. Bring your spouse or any partner you like, and play from whatever tee suits you.</p>
+    </div>
+  </div>
+  <p class="note" style="margin-top:12px">Friday Skins and 9 After 5 are organized by members rather than the golf shop, and do not earn points.</p>
+</section>
+
+<section id="signup">
+  <h2>How to sign up</h2>
+  <p class="sub">Almost everything is booked through the member calendar on the Awbrey Glen website. You will need to be logged in to the member site to see it. Events fill long before they are played, so know when registration opens.</p>
+  <div class="card" style="padding:4px 8px">
+    <table>
+      <tr><th>Event</th><th>When to act</th></tr>
+      <tr data-s="lottery"><td><b>Member Guest</b></td><td>Lottery entry opens in early March for a July tournament. Five day window. Miss it and you wait a year.</td></tr>
+      <tr data-s="fast"><td><b>Member Member</b></td><td>Opens roughly five weeks ahead at 7:00 am. First come, first served, and spots go fast. Have a partner lined up before it opens.</td></tr>
+      <tr data-s="cal"><td><b>Other majors</b></td><td>Member calendar, standard sign up. Watch for the announcement.</td></tr>
+      <tr data-s="cal"><td><b>Weekly games</b></td><td>Sign up on the member calendar that week. The Saturday Morning Game is the exception: sign up in person at the golf shop when you check in.</td></tr>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Questions about any of this can go to the golf shop.<br>Awbrey Glen Men's Golf Association</div>
+</footer>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  function go(id){
+    var el=document.getElementById(id); if(!el) return;
+    if(el.tagName==='DETAILS') el.open=true;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.remove('hl'); void el.offsetWidth; el.classList.add('hl');
+  }
+
+  // timeline
+  $$('[data-go]').forEach(function(b){ if(b.tagName==='BUTTON') b.addEventListener('click',function(){go(b.dataset.go)}); });
+
+  // expand all
+  var allBtn=$('#toggleAll');
+  allBtn.addEventListener('click',function(){
+    var ds=$$('details.ev'), open=ds.some(function(d){return !d.open});
+    ds.forEach(function(d){d.open=open});
+    allBtn.textContent=open?'Collapse all':'Expand all';
+  });
+
+  // division finder
+  $('#age').addEventListener('input',function(){
+    var a=parseInt(this.value,10), o=$('#divout');
+    if(isNaN(a)||a<18){o.textContent='Enter your age to see your division and tees.';return}
+    if(a<55) o.innerHTML='<b>Championship / Open Division</b>. Black Tees. Friday through Sunday, with 36 holes of qualifying and a shot at match play.';
+    else if(a<70) o.innerHTML='<b>Senior Division</b>. Gold/White Tees. Saturday and Sunday. The Rule of 80 is available for net competition only.';
+    else o.innerHTML='<b>Super Senior Division</b>. White Tees. Saturday and Sunday. The Rule of 80 is available for net competition only.';
+  });
+
+  // weekly filter
+  $$('#gfilter .chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      $$('#gfilter .chip').forEach(function(x){x.classList.remove('on')}); b.classList.add('on');
+      $$('.game').forEach(function(g){ g.style.display=(b.dataset.f==='all'||g.dataset.t===b.dataset.f)?'':'none'; });
+    });
+  });
+
+  // nav highlight
+  var links=$$('nav.top a'), secs=links.map(function(a){return $(a.getAttribute('href'))});
+  function onScroll(){
+    var y=window.scrollY+120, cur=0;
+    secs.forEach(function(s,i){ if(s.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>
