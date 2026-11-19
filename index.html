@@ -3,20 +3,519 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rodney Houle</title>
+<title>Rodney Houle — Lead Technical Product Designer</title>
+<meta name="description" content="Rodney Houle — Lead Technical Product Designer at Epic Games, focused on developer tools and workflows. Product owner of prefab workflows in Unreal Scene Graph, LLM prototyping, and Unreal Fest speaker.">
+<meta property="og:title" content="Rodney Houle — Lead Technical Product Designer">
+<meta property="og:description" content="Lead Technical Product Designer at Epic Games, focused on developer tools and workflows.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://rodneyhoule.github.io/">
+<link rel="canonical" href="https://rodneyhoule.github.io/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rodney Houle",
+  "jobTitle": "Lead Technical Product Designer",
+  "worksFor": { "@type": "Organization", "name": "Epic Games" },
+  "url": "https://rodneyhoule.github.io/",
+  "sameAs": ["https://www.linkedin.com/in/rodney-houle-8168531/"]
+}
+</script>
+<script>
+  // Resolve the theme before first paint: saved choice, else the system setting.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <style>
-  :root { color-scheme: light dark; --bg: #ffffff; --text: #1c1c1e; --link: #0a66c2; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #0f1012; --text: #ececee; --link: #6cb4ff; } }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 16px; }
-  a { color: var(--link); }
+  /* Palette matched to the Avava theme: deep teal, hot-pink labels, warm grays */
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --text: #181816;
+    --muted: #6e6c64;
+    --rule: #e5e2d9;
+    --accent: #204552;        /* teal: links, headings accents */
+    --button: #204552;
+    --button-hover: #2d5465;
+    --label: #d4006c;         /* pink, darkened slightly from #f2027c for text contrast */
+    --marker: #f2027c;
+    --shadow: 0 20px 40px rgba(24, 24, 22, .06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0b0c;
+      --surface: #151517;
+      --text: #f5f5f7;
+      --muted: #a1a1aa;
+      --rule: rgba(255, 255, 255, .14);
+      --accent: #8cc2d6;
+      --button: #2d5465;
+      --button-hover: #3a6a7f;
+      --label: #ff4fa3;
+      --marker: #f2027c;
+      --shadow: 0 20px 40px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .05);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0b0c;
+    --surface: #151517;
+    --text: #f5f5f7;
+    --muted: #a1a1aa;
+    --rule: rgba(255, 255, 255, .14);
+    --accent: #8cc2d6;
+    --button: #2d5465;
+    --button-hover: #3a6a7f;
+    --label: #ff4fa3;
+    --marker: #f2027c;
+    --shadow: 0 20px 40px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .05);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  /* Header */
+  header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+  h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 6px; }
+  .headline { font-size: 1.1rem; color: var(--muted); margin: 0 0 14px; }
+  .headline strong { color: var(--text); font-weight: 600; }
+  .contact { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; padding: 0; list-style: none; font-size: .95rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border-radius: 999px;
+    background: var(--button); color: #fff; font-weight: 600; font-size: .85rem;
+    letter-spacing: .08em; text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(32, 69, 82, .25);
+    white-space: nowrap;
+  }
+  .btn:hover { text-decoration: none; background: var(--button-hover); }
+  .btn svg { width: 16px; height: 16px; }
+  .actions { display: flex; align-items: center; gap: 10px; }
+  /* Sun/moon switch: knob slides under the active icon */
+  .theme-toggle {
+    display: none; /* shown once the script runs */
+    position: relative; flex: none;
+    width: 68px; height: 34px; padding: 0; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--rule);
+    color: var(--muted); cursor: pointer;
+    transition: border-color .2s;
+  }
+  :root[data-theme] .theme-toggle { display: inline-block; }
+  .theme-toggle:hover { border-color: var(--accent); }
+  .theme-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .theme-toggle .knob {
+    position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--button); box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    transition: transform .28s cubic-bezier(.4, 0, .2, 1);
+  }
+  :root[data-theme="dark"] .theme-toggle .knob { transform: translateX(34px); }
+  .theme-toggle svg {
+    position: absolute; top: 8px; width: 16px; height: 16px;
+    transition: color .28s;
+  }
+  .theme-toggle .icon-sun { left: 8px; }
+  .theme-toggle .icon-moon { left: 42px; }
+  :root:not([data-theme="dark"]) .theme-toggle .icon-sun,
+  :root[data-theme="dark"] .theme-toggle .icon-moon { color: #fff; }
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle .knob, .theme-toggle svg { transition: none; }
+  }
+
+  /* Sections */
+  section { margin-top: 44px; }
+  h2 {
+    font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--label); margin: 0 0 18px;
+  }
+  .summary { font-size: 1.08rem; margin: 0; }
+
+  .skills { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; color: var(--muted); }
+
+  /* Talks */
+  .talks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; list-style: none; margin: 0; padding: 0; }
+  .talk { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+  .video button { all: unset; cursor: pointer; position: absolute; inset: 0; display: block; }
+  .video button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .video img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .2s; }
+  .video button:hover img { opacity: .85; }
+  .video .play {
+    position: absolute; left: 50%; top: 50%; width: 56px; height: 40px; transform: translate(-50%, -50%);
+    background: rgba(20, 20, 20, .8); border-radius: 10px; display: grid; place-items: center;
+    transition: background .2s;
+  }
+  .video button:hover .play { background: #e62117; }
+  .video .play::after { content: ""; border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .talk-body { padding: 14px 16px 16px; }
+  .talk h3 { font-size: 1rem; line-height: 1.35; margin: 0 0 4px; }
+  .talk .event { font-size: .88rem; color: var(--muted); margin: 0; }
+  .talk .print-url { display: none; }
+
+  /* Experience */
+  .job { padding: 22px 0; border-top: 1px solid var(--rule); }
+  .job:first-of-type { border-top: 0; padding-top: 0; }
+  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline; }
+  .job h3 { font-size: 1.2rem; margin: 0; }
+  .job h3 .loc { font-weight: 400; color: var(--muted); font-size: .95rem; }
+  .dates { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .role { margin-top: 12px; }
+  .role h4 { font-size: 1rem; margin: 0; font-weight: 600; }
+  .role h4 .project { font-weight: 400; color: var(--muted); }
+  .role h4 .prev { font-weight: 400; color: var(--muted); font-size: .9rem; }
+  .role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline; }
+  ul.bullets { margin: 6px 0 0; padding-left: 1.2em; }
+  ul.bullets li { margin: 3px 0; }
+  ul.bullets li::marker { color: var(--marker); }
+
+  .proj-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--accent); color: var(--accent);
+    font-size: .88rem; font-weight: 600;
+    transition: background .2s, color .2s;
+  }
+  .chip:hover { text-decoration: none; background: var(--accent); color: var(--bg); }
+  .chip svg { width: 14px; height: 14px; }
+  .chip .print-url { display: none; }
+  .earlier { list-style: none; margin: 0; padding: 0; }
+  .earlier li { padding: 10px 0; border-top: 1px solid var(--rule); }
+  .earlier li:first-child { border-top: 0; padding-top: 0; }
+  .earlier .titles { color: var(--muted); font-style: italic; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; }
+
+  @media (max-width: 720px) {
+    .page { padding: 32px 16px 56px; }
+    .talks { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr; gap: 2px; }
+    .skills dd { margin-bottom: 10px; }
+    header { align-items: flex-start; }
+  }
+
+  /* Print / PDF */
+  @page { size: letter; margin: 0.45in 0.55in; }
+  @media print {
+    :root, :root[data-theme] { --bg: #fff; --surface: #fff; --text: #111; --muted: #444; --rule: #ccc; --accent: #204552; --label: #204552; --marker: #204552; }
+    body { font-size: 9.5pt; line-height: 1.35; background: #fff; }
+    .page { max-width: none; padding: 0; }
+    .no-print, .video { display: none !important; }
+    header { padding-bottom: 10px; }
+    h1 { font-size: 22pt; }
+    .headline { font-size: 11pt; margin-bottom: 6px; }
+    .contact { font-size: 9.5pt; }
+    .contact a[href^="http"]::after { content: none; }
+    section { margin-top: 12px; }
+    h2 { margin-bottom: 8px; font-size: 8.5pt; }
+    .summary { font-size: 9.5pt; }
+    .skills { gap: 2px 14px; }
+    .talks { display: block; }
+    .talk { border: 0; box-shadow: none; border-radius: 0; margin: 0 0 4px; break-inside: avoid; }
+    .talk-body { padding: 0; }
+    .talk h3 { display: inline; font-size: 10pt; }
+    .talk .event { display: inline; font-size: 10pt; }
+    .talk .event::before { content: " — "; }
+    .talk .print-url { display: inline; font-size: 8.5pt; color: var(--muted); }
+    .talk .print-url::before { content: " · "; }
+    .earlier br { display: none; }
+    .proj-links { gap: 2px 16px; margin: 2px 0 4px; }
+    .chip { border: 0; padding: 0; border-radius: 0; font-size: 9pt; font-weight: 600; }
+    .chip svg { display: none; }
+    .chip .print-url { display: inline; font-weight: 400; color: var(--muted); margin-left: 4px; }
+    .earlier .titles::before { content: " — "; font-style: normal; }
+    .job { padding: 7px 0; }
+    .job-head, h2 { break-after: avoid; }
+    .job h3 { font-size: 11pt; }
+    .role { margin-top: 6px; }
+    .role h4, .role-head { break-after: avoid; }
+    ul.bullets li { break-inside: avoid; }
+    .role h4 { font-size: 10pt; }
+    ul.bullets { margin-top: 2px; }
+    ul.bullets li { margin: 1px 0; }
+    .earlier li { padding: 4px 0; }
+    footer { display: none; }
+    a { color: inherit; }
+  }
 </style>
 </head>
 <body>
-<main>
-<h1>AG Pace</h1>
-<p>A golf pace of play app for iPhone.</p>
-<p><a href="ag-pace/privacy/">Privacy policy</a></p>
+<main class="page">
+
+  <header>
+    <div>
+      <h1>Rodney Houle</h1>
+      <p class="headline"><strong>Lead Technical Product Designer</strong> · Developer Tools &amp; Workflows</p>
+      <ul class="contact">
+        <li><a href="mailto:rhoule@pm.me">rhoule@pm.me</a></li>
+        <li><a href="https://www.linkedin.com/in/rodney-houle-8168531/" target="_blank" rel="noopener">linkedin.com/in/rodney-houle-8168531</a></li>
+        <li><a href="https://rodneyhoule.github.io/" target="_blank" rel="noopener">rodneyhoule.github.io</a></li>
+      </ul>
+    </div>
+    <div class="actions no-print">
+      <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark mode">
+        <span class="knob" aria-hidden="true"></span>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="btn" href="RodneyHoule.pdf" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      Download PDF
+    </a>
+    </div>
+  </header>
+
+  <section aria-labelledby="summary-h">
+    <h2 id="summary-h">Summary</h2>
+    <p class="summary">Lead technical product designer focused on tools and workflows for developers. Currently at Epic Games: product owner of prefab workflows in Unreal Scene Graph, working directly with internal and external developers to turn their needs into product requirements, and using LLMs for rapid prototyping. Regular Unreal Fest speaker teaching developers new workflows. Backed by 25+ years of hands-on production on titles including <em>Call of Duty</em>, <em>Days Gone</em>, and <em>Mafia III</em>, so the tools are designed by someone who has lived on the other side of them.</p>
+  </section>
+
+  <section aria-labelledby="talks-h">
+    <h2 id="talks-h">Talks</h2>
+    <ul class="talks">
+      <li class="talk">
+        <div class="video" data-id="Thrd3E08qXM">
+          <button type="button" aria-label="Play: Scene Graph: Workflows, Gameplay, and the Road Ahead">
+            <img src="https://i.ytimg.com/vi/Thrd3E08qXM/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+            <span class="play"></span>
+          </button>
+        </div>
+        <div class="talk-body">
+          <h3><a href="https://youtu.be/Thrd3E08qXM" target="_blank" rel="noopener">Scene Graph: Workflows, Gameplay, and the Road Ahead</a></h3>
+          <p class="event">Unreal Fest Chicago 2026</p>
+          <a class="print-url" href="https://youtu.be/Thrd3E08qXM" target="_blank" rel="noopener">youtu.be/Thrd3E08qXM</a>
+        </div>
+      </li>
+      <li class="talk">
+        <div class="video" data-id="qS10ea2QLyg">
+          <button type="button" aria-label="Play: Working Smarter in UEFN with Scene Graph">
+            <img src="https://i.ytimg.com/vi/qS10ea2QLyg/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+            <span class="play"></span>
+          </button>
+        </div>
+        <div class="talk-body">
+          <h3><a href="https://youtu.be/qS10ea2QLyg" target="_blank" rel="noopener">Working Smarter in UEFN with Scene Graph</a></h3>
+          <p class="event">Unreal Fest Orlando 2025</p>
+          <a class="print-url" href="https://youtu.be/qS10ea2QLyg" target="_blank" rel="noopener">youtu.be/qS10ea2QLyg</a>
+        </div>
+      </li>
+      <li class="talk">
+        <div class="video" data-id="p2aMVyRr7QY">
+          <button type="button" aria-label="Play: How Scene Graph Can Improve Your Life">
+            <img src="https://i.ytimg.com/vi/p2aMVyRr7QY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+            <span class="play"></span>
+          </button>
+        </div>
+        <div class="talk-body">
+          <h3><a href="https://youtu.be/p2aMVyRr7QY" target="_blank" rel="noopener">How Scene Graph Can Improve Your Life</a></h3>
+          <p class="event">Unreal Fest Prague 2024</p>
+          <a class="print-url" href="https://youtu.be/p2aMVyRr7QY" target="_blank" rel="noopener">youtu.be/p2aMVyRr7QY</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <dl class="skills">
+      <dt>Product</dt><dd>Developer workflow design, requirements gathering, turning developer feedback and data into product decisions, cross-team collaboration</dd>
+      <dt>AI &amp; prototyping</dt><dd>Rapid prototyping of features and workflows with LLMs; tool and system prototyping in C++, Blueprint, and Verse</dd>
+      <dt>Developer education</dt><dd>Conference talks (Unreal Fest 2024–2026), training programs, scripting standards and review processes</dd>
+      <dt>Languages</dt><dd>Verse, C++, Python, C#, Blueprint</dd>
+      <dt>Platforms</dt><dd>Unreal Engine 5 and Unreal Editor, Scene Graph, UEFN, Unity, CryEngine, proprietary engines</dd>
+      <dt>Leadership</dt><dd>Led teams of up to nine; coordinated with studio leads across the US, UK, Canada, and Germany</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="proj-h">
+    <h2 id="proj-h">Project</h2>
+    <article class="job">
+      <div class="job-head">
+        <h3>AG Caddie <span class="loc">· iPhone golf app</span></h3>
+        <span class="dates">Oct 2026 – Present</span>
+      </div>
+      <div class="role">
+        <p class="proj-links">
+          <a class="chip" href="https://apps.apple.com/us/app/ag-caddie/id6831402278" target="_blank" rel="noopener">View on the App Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="print-url">apps.apple.com/us/app/ag-caddie/id6831402278</span></a>
+          <a class="chip" href="https://rodneyhoule.github.io/ag-caddie/features/" target="_blank" rel="noopener">Features page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="print-url">rodneyhoule.github.io/ag-caddie/features</span></a>
+        </p>
+        <h4>Designer and developer <span class="project">· Designed in Claude Design, built with Claude Code</span></h4>
+        <ul class="bullets">
+          <li>Took a golf app for a local club's members from first commit to App Store approval in about five weeks (700+ commits) as an AI-assisted team of one</li>
+          <li>Designed the screens in Claude Design and built the app entirely with Claude Code, with zero lines of code written by hand, working across parallel feature branches from written feature plans and code reviews</li>
+          <li>Native Swift GPS engine detects the hole in play with the phone in a pocket or cart and shows pace and yardages in a lock-screen Live Activity</li>
+          <li>Scoring, handicaps, group games, matches synced across phones, a live course map, leagues with push notifications, and achievements, backed by Supabase</li>
+          <li>769 automated tests plus full GPS round replays; handled App Store review, the privacy manifest, and the privacy policy. Android version in development</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Epic Games</h3>
+        <span class="dates">Jan 2022 – Present</span>
+      </div>
+      <div class="role">
+        <h4>Lead Technical Product Designer <span class="project">· Unreal Editor</span> <span class="prev">(previously Senior Technical Product Designer)</span></h4>
+        <ul class="bullets">
+          <li>Product owner of prefab workflows within Scene Graph in the Unreal Editor</li>
+          <li>Work directly with internal and external developers to understand their workflows and turn their needs into product requirements</li>
+          <li>Partner with Creator Success to turn developer feedback and data into product improvements</li>
+          <li>Rapid prototyping of features and workflows using LLMs</li>
+          <li>Design and improve developer workflows across the Unreal Editor</li>
+          <li>Teach developers new workflows as a Scene Graph speaker at Unreal Fest Prague 2024, Orlando 2025, and Chicago 2026</li>
+          <li>Subject-matter expert on the Verse programming language and Scene Graph</li>
+          <li>Collaborate with product teams across Epic, including Fab and Lore (formerly Unreal Revision Control), and keep documentation aligned with new features</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Bend Studio <span class="loc">(Sony Interactive Entertainment)</span></h3>
+        <span class="dates">Aug 2018 – Jan 2022</span>
+      </div>
+      <div class="role">
+        <h4>Senior Staff Technical Game Designer <span class="project">· Days Gone</span></h4>
+        <ul class="bullets">
+          <li>Pitched, designed, and shipped Photo Mode end to end in six months, including direct player control of post-processing for advanced color correction</li>
+          <li>Wrote the difficulty system in C++ and exposed tunable values so the Design Director could balance the game without engineering help</li>
+          <li>Wrote the reward unlock/revoke system tied to PS4 entitlements in C++</li>
+          <li>Post-release: shipped Survival Mode, New Game+, and new difficulty levels</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>2K Games <span class="loc">· Novato, CA</span></h3>
+        <span class="dates">Jan 2016 – Jun 2018</span>
+      </div>
+      <div class="role">
+        <h4>Senior Technical Designer <span class="project">· BioShock 4 (pre-production, UE4)</span></h4>
+        <ul class="bullets">
+          <li>Built Unreal/Blueprint training for designers and established the team's scripting standards and review process</li>
+          <li>Prototyped open-world systems (dialogue, quests, AI, player abilities) in C++ and Blueprint</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Senior Mission Designer <span class="project">· Mafia III</span></h4>
+        <ul class="bullets">
+          <li>Joined at alpha and helped take missions to gold on PS4, Xbox One, and PC, iterating from user-test results</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>IllFonic <span class="loc">· Denver, CO</span></h3>
+        <span class="dates">Oct 2013 – Nov 2015</span>
+      </div>
+      <div class="role">
+        <h4>Lead Designer <span class="project">· Star Citizen (FPS module)</span></h4>
+        <ul class="bullets">
+          <li>Led the IllFonic design team and coordinated schedules and design with leads in Los Angeles, Austin, Manchester, Montreal, and Frankfurt</li>
+          <li>Owned FPS mechanics and multiplayer level and system design</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h4>Lead Designer / Producer <span class="project">· Project Advena (Unreal Engine)</span></h4>
+        <ul class="bullets">
+          <li>Owned system design and milestone planning through vertical slice; managed outside VFX/SFX contractors; prototyped in Blueprint</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Spark Unlimited <span class="loc">· Sherman Oaks, CA</span></h3>
+        <span class="dates">Sep 2007 – Jun 2013</span>
+      </div>
+      <div class="role">
+        <div class="role-head">
+          <h4>Lead Level Designer <span class="project">· Lost Planet 3</span></h4>
+          <span class="dates">2010 – 2013</span>
+        </div>
+        <ul class="bullets">
+          <li>Managed nine designers; built the Unreal training program and scripting standards for design and environment teams</li>
+          <li>Owned player controls, camera, weapons, locomotion, and AI combat design</li>
+        </ul>
+      </div>
+      <div class="role">
+        <ul class="bullets">
+          <li>Earlier at Spark: Senior Designer on an unannounced melee action title (2009 – 2010), leading the stealth feature team; Senior Game Designer on <em>Legendary</em> (2007 – 2008), finishing 4 of 8 episodes</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="earlier-h">
+    <h2 id="earlier-h">Earlier</h2>
+    <ul class="earlier">
+      <li><strong>Infinity Ward</strong>, Encino, CA — Level Designer, 2004 – 2006<br><span class="titles">Call of Duty: United Offensive, Call of Duty 2, Call of Duty: Modern Warfare</span></li>
+      <li><strong>Monolith Productions</strong>, Kirkland, WA — Level Designer, 2000 – 2003<br><span class="titles">No One Lives Forever 2, Contract J.A.C.K., F.E.A.R.</span></li>
+    </ul>
+  </section>
+
+  <footer>© 2026 Rodney Houle</footer>
 </main>
+
+<script>
+  // Light/dark toggle: remembers the visitor's choice; otherwise follows the system setting live.
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    function label() {
+      btn.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+    }
+    function saved() { try { return localStorage.getItem('theme'); } catch (e) { return null; } }
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
+    });
+    mq.addEventListener('change', function (e) {
+      if (!saved()) { root.setAttribute('data-theme', e.matches ? 'dark' : 'light'); label(); }
+    });
+    label();
+  })();
+
+  // Click-to-play: load the YouTube player only when a thumbnail is clicked.
+  document.querySelectorAll('.video button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var wrap = btn.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + wrap.dataset.id + '?autoplay=1&rel=0';
+      iframe.title = btn.getAttribute('aria-label').replace(/^Play: /, '');
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      wrap.replaceChildren(iframe);
+    });
+  });
+</script>
 </body>
 </html>
